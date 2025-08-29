@@ -1,11 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Fakhar Azeem | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <style>
         :root {
             --primary: #0ea5e9;
@@ -28,6 +31,63 @@
             color: var(--light);
             line-height: 1.6;
         }
+
+
+        /* Profile Picture Wrapper */
+        .profile-pic-wrapper {
+            position: relative;
+            width: 270px;
+            height: 270px;
+            margin-bottom: 24px;
+            animation: float 4s ease-in-out infinite;
+            /* floating animation */
+        }
+
+        /* Profile Picture Image */
+        .profile-pic-wrapper img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 2;
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.5),
+                0 0 50px rgba(126, 34, 206, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+
+
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+            }
+
+            to {
+                box-shadow: 0 0 35px var(--secondary), 0 0 60px var(--primary);
+            }
+        }
+
 
         .container {
             max-width: 1200px;
@@ -52,7 +112,7 @@
             padding: 20px 0;
         }
 
-      
+
 
         .nav-links {
             display: flex;
@@ -64,11 +124,12 @@
             color: var(--light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--primary);
+            transform: scale(1.12) translateY(-2px);
         }
 
         .hamburger {
@@ -95,7 +156,7 @@
             justify-content: center;
             gap: 0;
         }
-        
+
 
         .hero-text {
             flex: 1;
@@ -135,11 +196,12 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .contact-info a:hover {
             color: var(--primary);
+            transform: scale(1.08) translateY(-2px);
         }
 
         .social-links {
@@ -151,11 +213,12 @@
         .social-links a {
             color: var(--light);
             font-size: 1.5rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .social-links a:hover {
             color: var(--primary);
+            transform: scale(1.15) rotate(-8deg);
         }
 
         /* Sections */
@@ -239,7 +302,7 @@
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
 
@@ -248,11 +311,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 25px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .skill-category:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15), 0 2px 8px rgba(126, 34, 206, 0.10);
         }
 
         .skill-category h3 {
@@ -288,11 +352,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15), 0 2px 8px rgba(126, 34, 206, 0.10);
         }
 
         .project-content {
@@ -351,11 +416,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .certification-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15), 0 2px 8px rgba(126, 34, 206, 0.10);
         }
 
         /* Footer */
@@ -368,6 +434,70 @@
         .footer-text {
             color: var(--gray);
         }
+        /* Experience Section */
+.experience-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-left: 4px solid var(--primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.experience-icon {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-right: 15px;
+}
+
+.experience-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--secondary);
+}
+
+.experience-card h4 {
+  margin: 3px 0;
+  font-size: 1rem;
+  color: #bbb;
+}
+
+.experience-date {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-style: italic;
+}
+
+.experience-details {
+  list-style: none;
+  padding-left: 0;
+}
+
+.experience-details li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.experience-details li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -417,9 +547,11 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <header>
@@ -428,10 +560,17 @@
                 <ul class="nav-links">
                     <li><a href="#hero"><i class="fas fa-home" style="color:#0ea5e9;"></i> <span>Home</span></a></li>
                     <li><a href="#about"><i class="fas fa-user" style="color:#7e22ce;"></i> <span>About</span></a></li>
-                    <li><a href="#education"><i class="fas fa-graduation-cap" style="color:#f59e42;"></i> <span>Education</span></a></li>
-                    <li><a href="#skills"><i class="fas fa-tools" style="color:#38bdf8;"></i> <span>Skills</span></a></li>
-                    <li><a href="#projects"><i class="fas fa-laptop-code" style="color:#22d3ee;"></i> <span>Projects</span></a></li>
-                    <li><a href="#certifications"><i class="fas fa-certificate" style="color:#facc15;"></i> <span>Certifications</span></a></li>
+                    <li><a href="#education"><i class="fas fa-graduation-cap" style="color:#f59e42;"></i>
+                            <span>Education</span></a></li>
+                    <li><a href="#skills"><i class="fas fa-tools" style="color:#38bdf8;"></i> <span>Skills</span></a>
+                    </li>
+                    <li><a href="#projects"><i class="fas fa-laptop-code" style="color:#22d3ee;"></i>
+                            <span>Projects</span></a></li>
+                    <li><a href="#certifications"><i class="fas fa-certificate" style="color:#facc15;"></i>
+                        
+                            <span>Certifications</span></a></li>
+                            <li><a href="#experience"><i class="fas fa-briefcase" style="color:#03356e;"></i> Experience</a></li>
+
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -444,22 +583,33 @@
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-center" style="width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                    <img src="1.jpg" alt="Profile" style="width:260px; height:260px; object-fit:cover; object-position:top; border-radius:50%; margin-bottom:24px; " />
-                    <h1 style="font-size:3rem; background:linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip:text; background-clip:text; color:transparent; text-align:center;">M Fakhar Azeem</h1>
-                    <h4 style="font-size:1.5rem; color:var(--gray); text-align:center; margin-bottom:20px;">Junior Frontend Developer</h4>
+                <div class="hero-center"
+                    style="width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                    <div class="profile-pic-wrapper"
+                        style="position:relative; width:270px; height:270px; margin-bottom:24px;">
+                        <img src="1.jpg" alt="Profile"
+                            style="width:260px; height:260px; object-fit:cover; object-position:top; border-radius:50%; position:absolute; top:5px; left:5px; z-index:2;" />
+                        <div class="rotating-border"></div>
+                    </div>
+
+                    <h1
+                        style="font-size:3rem; background:linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip:text; background-clip:text; color:transparent; text-align:center;">
+                        M Fakhar Azeem</h1>
+                    <h4 style="font-size:1.5rem; color:var(--gray); text-align:center; margin-bottom:20px;" >Junior Frontend Developer</h4>
 
                 </div>
-                            <div class="contact-info" style="justify-content:center; margin-bottom:20px;">
-                <a href="tel:+923080402250"><i class="fas fa-phone"></i> (+92) 3080402250</a>
-                <a href="mailto:fakherazeem1@gmail.com"><i class="fas fa-envelope"></i> fakherazeem1@gmail.com</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Lahore, Punjab</a>
-            </div>
-            <div class="social-links" style="justify-content:center; margin-bottom:20px;">
-                <a href="https://www.linkedin.com/in/fakherazeem"><i class="fab fa-linkedin" style="color: #0077B5;"></i></a>
-                <a href="https://github.com/fakherazeem"><i class="fab fa-github" style="color: #818286;"></i></a>
-                <a href="https://wa.me/923080402250" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366; "></i></a>
-            </div>
+                <div class="contact-info" style="justify-content:center; margin-bottom:20px;">
+                    <a href="tel:+923080402250"><i class="fas fa-phone"></i> (+92) 3080402250</a>
+                    <a href="mailto:fakherazeem1@gmail.com"><i class="fas fa-envelope"></i> fakherazeem1@gmail.com</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Lahore, Punjab</a>
+                </div>
+                <div class="social-links" style="justify-content:center; margin-bottom:20px;">
+                    <a href="https://www.linkedin.com/in/fakherazeem"><i class="fab fa-linkedin"
+                            style="color: #0077B5;"></i></a>
+                    <a href="https://github.com/fakherazeem"><i class="fab fa-github" style="color: #818286;"></i></a>
+                    <a href="https://wa.me/923080402250" target="_blank"><i class="fab fa-whatsapp"
+                            style="color:#25D366; "></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -467,29 +617,32 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">Profile</h2>
-            <p>Motivated and detail-oriented IT student with a strong foundation in programming, networking, and database management. Passionate about learning new technologies and solving real-world problems through software and system solutions. Seeking internship or entry-level opportunities to apply academic knowledge in a practical environment.</p>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="300">Profile</h2>
+            <p data-aos="fade-right" data-aos-delay="500">Motivated and detail-oriented IT student with a strong foundation in programming, networking, and
+                database management. Passionate about learning new technologies and solving real-world problems through
+                software and system solutions. Seeking internship or entry-level opportunities to apply academic
+                knowledge in a practical environment.</p>
         </div>
     </section>
 
     <!-- Education Section -->
     <section id="education">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title" data-aos="fade-up">Education</h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item"data-aos="fade-right"data-aos-delay="500">
                     <div class="timeline-date">Oct 2022 - 2026</div>
                     <h3 class="timeline-title">BS Information Engineering Technology</h3>
                     <p class="timeline-subtitle">University of Lahore</p>
                     <p>CGPA: 3.26</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right"data-aos-delay="500">
                     <div class="timeline-date">2018 - 2020</div>
                     <h3 class="timeline-title">INTERMEDIATE (FSc)</h3>
                     <p class="timeline-subtitle">KIPS College, Lahore</p>
                     <p>70%</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item"data-aos="fade-right"data-aos-delay="500">
                     <div class="timeline-date">2016 - 2018</div>
                     <h3 class="timeline-title">Matriculation</h3>
                     <p class="timeline-subtitle">Allied School, Kasur</p>
@@ -502,9 +655,9 @@
     <!-- Skills Section -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
             <div class="skills-container">
-                <div class="skill-category">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="500">
                     <h3>Languages</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-html5" style="color:#f5f5f5; margin-right:8px;"></i> HTML</li>
@@ -515,7 +668,7 @@
                         <li><i class="fab fa-python" style="color:#3776ab; margin-right:8px;"></i> Python</li>
                     </ul>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="700">
                     <h3>Frameworks/Libraries</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-react" style="color:#61dafb; margin-right:8px;"></i> React</li>
@@ -523,7 +676,7 @@
                         <li><i class="fab fa-python" style="color:#024e31; margin-right:8px;"></i> Django</li>
                     </ul>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="900">
                     <h3>Developer Tools</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-git-alt" style="color:#f34f29; margin-right:8px;"></i> Git</li>
@@ -532,13 +685,14 @@
                         <li><i class="fab fa-chrome" style="color:#ffffff; margin-right:8px;"></i> Chrome DevTools</li>
                     </ul>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="1100">
                     <h3>Additional Skills</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-aws" style="color:#ff9900; margin-right:8px;"></i> AWS</li>
                         <li><i class="fas fa-database" style="color:#4479a1; margin-right:8px;"></i> MySQL</li>
                         <li><i class="fas fa-network-wired" style="color:#4caf50; margin-right:8px;"></i> CCNA</li>
-                        <li><i class="fas fa-pencil-ruler" style="color:#ff9800; margin-right:8px;"></i> Basic UI/UX principles</li>
+                        <li><i class="fas fa-pencil-ruler" style="color:#ff9800; margin-right:8px;"></i> Basic UI/UX
+                            principles</li>
                     </ul>
                 </div>
             </div>
@@ -548,9 +702,9 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
+            <h2 class="section-title" data-aos="fade-up">Projects</h2>
+            <div class="projects-grid ">
+                <div class="project-card"data-aos="fade-up" data-aos-delay="200">
                     <div class="project-content">
                         <h3 class="project-title">Car Hub – Full Stack Car Selling Platform</h3>
                         <div class="project-tech">
@@ -559,16 +713,19 @@
                             <span class="tech-pill">Tailwind CSS</span>
                             <span class="tech-pill">JWT Auth</span>
                         </div>
-                        <p class="project-description">A full-stack car selling web application featuring dynamic user and admin dashboards.</p>
+                        <p class="project-description">A full-stack car selling web application featuring dynamic user
+                            and admin dashboards.</p>
                         <ul class="project-features">
-                            <li>Developed Car Hub, a full-stack car selling web application featuring dynamic user and admin dashboards</li>
-                            <li>Integrated React.js frontend with Django REST APIs, delivering real-time product data</li>
+                            <li>Developed Car Hub, a full-stack car selling web application featuring dynamic user and
+                                admin dashboards</li>
+                            <li>Integrated React.js frontend with Django REST APIs, delivering real-time product data
+                            </li>
                             <li>Built secure JWT-based authentication system to handle user login</li>
                             <li>Enhanced user experience with separate dashboards for customers and admins</li>
                         </ul>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="project-content">
                         <h3 class="project-title">Guidely | Online Mentorship Platform</h3>
                         <div class="project-tech">
@@ -577,10 +734,12 @@
                             <span class="tech-pill">Supabase</span>
                             <span class="tech-pill">PostgreSQL</span>
                         </div>
-                        <p class="project-description">A full-stack mentorship web app enabling students to book sessions with professionals.</p>
+                        <p class="project-description">A full-stack mentorship web app enabling students to book
+                            sessions with professionals.</p>
                         <ul class="project-features">
                             <li>Developed a full-stack mentorship web app using Next.js and Tailwind CSS</li>
-                            <li>Implemented role-based authentication (mentor/mentee) and dynamic dashboard redirection</li>
+                            <li>Implemented role-based authentication (mentor/mentee) and dynamic dashboard redirection
+                            </li>
                             <li>Designed a scalable PostgreSQL schema supporting bookings and connections</li>
                             <li>Integrated a mentor approval pipeline and mentor directory</li>
                         </ul>
@@ -593,32 +752,52 @@
     <!-- Certifications Section -->
     <section id="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications</h2>
+            <h2 class="section-title" data-aos="fade-up">Certifications</h2>
             <div class="certifications-list">
-                <div class="certification-item">
+                <div class="certification-item"data-aos="zoom-in" data-aos-delay="200">
                     <h3>Flutter and Dart: Developing iOS, Android, and Mobile Apps</h3>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item" data-aos="zoom-in" data-aos-delay="400">
                     <h3>Foundation Of Cybersecurity</h3>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item"data-aos="zoom-in" data-aos-delay="600">
                     <h3>Introduction to Networking</h3>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item" data-aos="zoom-in" data-aos-delay="800">
                     <h3>Build a free website with WordPress</h3>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item"data-aos="zoom-in"   data-aos-delay="1000">
                     <h3>Python for Data Science, AI & Development</h3>
                 </div>
-                <div class="certification-item">
+                <div class="certification-item"data-aos="zoom-in" data-aos-delay="1200">
                     <h3>AWS Networking Basics v01.01.00s</h3>
                 </div>
             </div>
         </div>
     </section>
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Experience</h2>
+    <div class="experience-card" data-aos="fade-right">
+      <div class="experience-header">
+        <i class="fas fa-laptop-code experience-icon"></i>
+        <div>
+          <h3>Junior Frontend Developer (Intern)</h3>
+          <h4>University of South Asia – Lahore</h4>
+          <span class="experience-date">July 2025 – Present</span>
+        </div>
+      </div>
+      <ul class="experience-details">
+        <li>Assisted in developing and maintaining responsive web pages using <strong>HTML, CSS, Tailwind, and Bootstrap</strong> for university portals.</li>
+        <li>Collaborated with senior developers to optimize UI components and improve user experience across devices.</li>
+        <li>Implemented reusable code modules and practiced version control using <strong>Git & GitHub</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 
-   
+
 
     <script>
         // Mobile navigation toggle
@@ -638,13 +817,17 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
+
+        // Initialize AOS animations
+        AOS.init();
     </script>
 </body>
+
 </html>

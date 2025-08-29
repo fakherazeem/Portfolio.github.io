@@ -343,7 +343,7 @@
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 30px;
         }
 
@@ -375,6 +375,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 15px;
+            
         }
 
         .tech-pill {
@@ -383,6 +384,7 @@
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
+            
         }
 
         .project-description {
@@ -441,13 +443,12 @@
   padding: 24px;
   margin-top: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  border-left: 4px solid var(--primary);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15), 0 2px 8px rgba(126, 34, 206, 0.10);
 }
 
 .experience-header {
@@ -618,7 +619,7 @@
     <section id="about">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up" data-aos-delay="300">Profile</h2>
-            <p data-aos="fade-right" data-aos-delay="500">Motivated and detail-oriented IT student with a strong foundation in programming, networking, and
+            <p data-aos="fade-right" data-aos-delay="400">Motivated and detail-oriented IT student with a strong foundation in programming, networking, and
                 database management. Passionate about learning new technologies and solving real-world problems through
                 software and system solutions. Seeking internship or entry-level opportunities to apply academic
                 knowledge in a practical environment.</p>
@@ -668,7 +669,7 @@
                         <li><i class="fab fa-python" style="color:#3776ab; margin-right:8px;"></i> Python</li>
                     </ul>
                 </div>
-                <div class="skill-category"data-aos="zoom-in"data-aos-delay="700">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="600">
                     <h3>Frameworks/Libraries</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-react" style="color:#61dafb; margin-right:8px;"></i> React</li>
@@ -676,7 +677,7 @@
                         <li><i class="fab fa-python" style="color:#024e31; margin-right:8px;"></i> Django</li>
                     </ul>
                 </div>
-                <div class="skill-category"data-aos="zoom-in"data-aos-delay="900">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="700">
                     <h3>Developer Tools</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-git-alt" style="color:#f34f29; margin-right:8px;"></i> Git</li>
@@ -685,7 +686,7 @@
                         <li><i class="fab fa-chrome" style="color:#ffffff; margin-right:8px;"></i> Chrome DevTools</li>
                     </ul>
                 </div>
-                <div class="skill-category"data-aos="zoom-in"data-aos-delay="1100">
+                <div class="skill-category"data-aos="zoom-in"data-aos-delay="800">
                     <h3>Additional Skills</h3>
                     <ul class="skill-list">
                         <li><i class="fab fa-aws" style="color:#ff9900; margin-right:8px;"></i> AWS</li>
@@ -707,7 +708,7 @@
                 <div class="project-card"data-aos="fade-up" data-aos-delay="200">
                     <div class="project-content">
                         <h3 class="project-title">Car Hub – Full Stack Car Selling Platform</h3>
-                        <div class="project-tech">
+                        <div class="project-tech " >
                             <span class="tech-pill">React.js</span>
                             <span class="tech-pill">Django</span>
                             <span class="tech-pill">Tailwind CSS</span>
@@ -777,8 +778,8 @@
     </section>
 <section id="experience" class="section">
   <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Experience</h2>
-    <div class="experience-card" data-aos="fade-right">
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="300">Experience</h2>
+    <div class="experience-card" data-aos="fade-right" data-aos-delay="500">
       <div class="experience-header">
         <i class="fas fa-laptop-code experience-icon"></i>
         <div>
@@ -788,7 +789,7 @@
         </div>
       </div>
       <ul class="experience-details">
-        <li>Assisted in developing and maintaining responsive web pages using <strong>HTML, CSS, Tailwind, and Bootstrap</strong> for university portals.</li>
+        <li>Assisted in developing and maintaining responsive web pages using <strong>HTML, CSS, Tailwind, Java Script and Bootstrap</strong> for university portals.</li>
         <li>Collaborated with senior developers to optimize UI components and improve user experience across devices.</li>
         <li>Implemented reusable code modules and practiced version control using <strong>Git & GitHub</strong>.</li>
       </ul>
